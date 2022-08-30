@@ -192,8 +192,16 @@ function repeatImplicationTable(STable,unequalStateList){
 function findEquivalentStates(STable,list){
   for(let i=1;i<STable.length;i++){
     for(let j=0;j<i;j++){
-      if(STable[i][j]!='X')
-        list.push(STable[i][j]);
+      if(STable[i][j]!='X'){
+        // console.log(STable[i][j][0][0]>STable[i][j][0][2]);
+        // console.log();
+        if(STable[i][j][0][0]>STable[i][j][0][2]){
+          STable[i][j][0] = STable[i][j][0].split("").reverse().join("");
+          list.push(STable[i][j]);
+        } else {
+          list.push(STable[i][j]);
+        }
+      }
     }
   }
   return list;
